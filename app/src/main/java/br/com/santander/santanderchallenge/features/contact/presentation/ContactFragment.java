@@ -13,21 +13,17 @@ import java.util.List;
 import br.com.santander.santanderchallenge.features.contact.interactor.ContactInteractor;
 import br.com.santander.santanderchallenge.features.contact.interactor.ContactInteractorImpl;
 import br.com.santander.santanderchallenge.features.contact.model.CellsItem;
-import br.com.santander.santanderchallenge.features.contact.presenter.ContactPresenter;
-import br.com.santander.santanderchallenge.features.contact.presenter.ContactPresenterImpl;
 import br.com.santander.santanderchallenge.util.Logger;
 
 public class ContactFragment extends Fragment implements ContactView {
 
-    ContactPresenter presenter;
     ContactInteractor interactor;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        presenter = new ContactPresenterImpl(this);
-        interactor = new ContactInteractorImpl(presenter);
+        interactor = new ContactInteractorImpl(this);
         interactor.fetchCells();
 
         return super.onCreateView(inflater, container, savedInstanceState);
