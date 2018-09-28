@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,11 +35,13 @@ public class InvestmentFragment extends Fragment implements IInvestmentView {
     @Override
     public void onScreenReady(ScreenResponse response) {
         Logger.d(response.getScreen().getFundName());
-        Toast.makeText(getContext(), response.getScreen().getFundName(), Toast.LENGTH_SHORT).show();
+        Toast toast = Toast.makeText(requireContext(), response.getScreen().getFundName(), Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
     }
 
     @Override
     public void onScreenError(String msg) {
-        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show();
     }
 }

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -34,10 +35,13 @@ public class ContactFragment extends Fragment implements ContactView {
         for (CellsItem cellsItem : cellsItems) {
             Logger.d(cellsItem.getMessage());
         }
+        Toast.makeText(requireContext(), cellsItems.get(0).getMessage(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onCellsError(String msg) {
         Logger.e(msg);
+        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show();
+
     }
 }
