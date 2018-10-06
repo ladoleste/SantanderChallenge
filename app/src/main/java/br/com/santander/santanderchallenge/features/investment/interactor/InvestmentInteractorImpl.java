@@ -1,6 +1,5 @@
 package br.com.santander.santanderchallenge.features.investment.interactor;
 
-
 import br.com.santander.santanderchallenge.features.investment.model.ScreenResponse;
 import br.com.santander.santanderchallenge.features.investment.presenter.InvestmentPresenter;
 import br.com.santander.santanderchallenge.features.investment.repository.InvestmentRepository;
@@ -8,15 +7,17 @@ import br.com.santander.santanderchallenge.features.investment.repository.Screen
 
 public class InvestmentInteractorImpl implements InvestmentInteractor {
 
-    private InvestmentPresenter presenter;
+    private final InvestmentPresenter presenter;
+    private final InvestmentRepository investmentRepository;
 
     public InvestmentInteractorImpl(InvestmentPresenter presenter) {
         this.presenter = presenter;
+        investmentRepository = new InvestmentRepository();
     }
 
     @Override
     public void fetchScreen() {
-        new InvestmentRepository().fetchScreen(new ScreenCallback() {
+        investmentRepository.fetchScreen(new ScreenCallback() {
             @Override
             public void onSuccess(ScreenResponse response) {
                 presenter.onSuccess(response);

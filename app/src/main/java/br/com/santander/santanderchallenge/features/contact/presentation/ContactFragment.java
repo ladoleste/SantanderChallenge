@@ -14,20 +14,19 @@ import java.util.List;
 import br.com.santander.santanderchallenge.features.contact.interactor.ContactInteractor;
 import br.com.santander.santanderchallenge.features.contact.interactor.ContactInteractorImpl;
 import br.com.santander.santanderchallenge.features.contact.model.CellsItem;
+import br.com.santander.santanderchallenge.features.contact.presenter.ContactPresenterImpl;
 import br.com.santander.santanderchallenge.util.Logger;
 
 public class ContactFragment extends Fragment implements ContactView {
 
-    ContactInteractor interactor;
+    private final ContactInteractor interactor = new ContactInteractorImpl(new ContactPresenterImpl(this));
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        interactor = new ContactInteractorImpl(this);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
         interactor.fetchCells();
-
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return view;
     }
 
     @Override
@@ -42,6 +41,5 @@ public class ContactFragment extends Fragment implements ContactView {
     public void onCellsError(String msg) {
         Logger.e(msg);
         Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show();
-
     }
 }

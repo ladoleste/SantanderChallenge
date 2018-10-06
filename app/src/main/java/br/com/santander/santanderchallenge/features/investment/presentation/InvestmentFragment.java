@@ -13,23 +13,19 @@ import android.widget.Toast;
 import br.com.santander.santanderchallenge.features.investment.interactor.InvestmentInteractor;
 import br.com.santander.santanderchallenge.features.investment.interactor.InvestmentInteractorImpl;
 import br.com.santander.santanderchallenge.features.investment.model.ScreenResponse;
-import br.com.santander.santanderchallenge.features.investment.presenter.InvestmentPresenter;
 import br.com.santander.santanderchallenge.features.investment.presenter.InvestmentPresenterImpl;
 import br.com.santander.santanderchallenge.util.Logger;
 
-public class InvestmentFragment extends Fragment implements IInvestmentView {
+public class InvestmentFragment extends Fragment implements InvestmentView {
 
-    InvestmentPresenter presenter;
-    InvestmentInteractor interactor;
+    private final InvestmentInteractor interactor = new InvestmentInteractorImpl(new InvestmentPresenterImpl(this));
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        presenter = new InvestmentPresenterImpl(this);
-        interactor = new InvestmentInteractorImpl(presenter);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
         interactor.fetchScreen();
-
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return view;
     }
 
     @Override
@@ -42,6 +38,7 @@ public class InvestmentFragment extends Fragment implements IInvestmentView {
 
     @Override
     public void onScreenError(String msg) {
+        Logger.e(msg);
         Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show();
     }
 }

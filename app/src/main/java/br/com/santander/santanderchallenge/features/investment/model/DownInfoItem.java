@@ -1,5 +1,7 @@
 package br.com.santander.santanderchallenge.features.investment.model;
 
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 public class DownInfoItem {
@@ -26,6 +28,7 @@ public class DownInfoItem {
         this.name = name;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return

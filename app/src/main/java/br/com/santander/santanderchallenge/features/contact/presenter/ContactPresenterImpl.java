@@ -7,7 +7,7 @@ import br.com.santander.santanderchallenge.features.contact.presentation.Contact
 
 public class ContactPresenterImpl implements ContactPresenter {
 
-    private ContactView view;
+    private final ContactView view;
 
     public ContactPresenterImpl(ContactView view) {
         this.view = view;

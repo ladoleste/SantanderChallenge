@@ -1,5 +1,7 @@
 package br.com.santander.santanderchallenge.features.investment.model;
 
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -116,6 +118,7 @@ public class Screen {
         this.info = info;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return

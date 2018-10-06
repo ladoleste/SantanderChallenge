@@ -1,5 +1,7 @@
 package br.com.santander.santanderchallenge.features.investment.model;
 
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 public class ScreenResponse {
@@ -15,6 +17,7 @@ public class ScreenResponse {
         this.screen = screen;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return

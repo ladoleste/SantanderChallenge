@@ -1,13 +1,13 @@
 package br.com.santander.santanderchallenge.features.investment.presenter;
 
 import br.com.santander.santanderchallenge.features.investment.model.ScreenResponse;
-import br.com.santander.santanderchallenge.features.investment.presentation.IInvestmentView;
+import br.com.santander.santanderchallenge.features.investment.presentation.InvestmentView;
 
 public class InvestmentPresenterImpl implements InvestmentPresenter {
 
-    private IInvestmentView view;
+    private final InvestmentView view;
 
-    public InvestmentPresenterImpl(IInvestmentView view) {
+    public InvestmentPresenterImpl(InvestmentView view) {
         this.view = view;
     }
 
